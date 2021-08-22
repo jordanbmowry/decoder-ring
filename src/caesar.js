@@ -8,6 +8,45 @@ const caesarModule = (function () {
 
   function caesar(input, shift, encode = true) {
     // your solution code here
+    if (!shift || shift < -25 || shift > 25) return false;
+    if (!encode) shift *= -1;
+    const shiftedOutput = [];
+    const inputLower = input.toLowerCase();
+    const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+
+    if (shift >= 0) {
+      for (let i = 0; i < inputLower.length; i++) {
+        const currentPosition = inputLower[i];
+        const index = alphabet.indexOf(currentPosition);
+        if (!alphabet.includes(currentPosition)) {
+          shiftedOutput.push(currentPosition);
+        } else if (index + shift > 25) {
+          const remainder = ((index + shift) % 25) - 1;
+          const newLetter = alphabet[remainder];
+          shiftedOutput.push(newLetter);
+        } else {
+          const newLetter = alphabet[index + shift];
+          shiftedOutput.push(newLetter);
+        }
+      }
+    }
+
+    if (shift < 0) {
+      for (let i = 0; i < inputLower.length; i++) {
+        const currentPosition = inputLower[i];
+        const index = alphabet.indexOf(currentPosition);
+        if (!alphabet.includes(currentPosition)) {
+          shiftedOutput.push(currentPosition);
+        } else {
+          const letter = alphabet.slice(
+            index + shift,
+            index + shift + 1 ? index + shift + 1 : undefined
+          );
+          shiftedOutput.push(letter);
+        }
+      }
+    }
+    return shiftedOutput.join('');
   }
 
   return {
