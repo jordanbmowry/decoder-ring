@@ -8,12 +8,14 @@ const caesarModule = (function () {
 
   function caesar(input, shift, encode = true) {
     // your solution code here
-    if (!shift || shift < -25 || shift > 25) return false;
-    if (!encode) shift *= -1;
     const shiftedOutput = [];
     const inputLower = input.toLowerCase();
     const alphabet = 'abcdefghijklmnopqrstuvwxyz';
-
+    // guard clause
+    if (!shift || shift < -25 || shift > 25) return false;
+    // decode
+    if (!encode) shift *= -1;
+    // shift up
     if (shift >= 0) {
       for (let i = 0; i < inputLower.length; i++) {
         const currentPosition = inputLower[i];
@@ -30,7 +32,7 @@ const caesarModule = (function () {
         }
       }
     }
-
+    // shift down
     if (shift < 0) {
       for (let i = 0; i < inputLower.length; i++) {
         const currentPosition = inputLower[i];
