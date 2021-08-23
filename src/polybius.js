@@ -9,8 +9,9 @@ const polybiusModule = (function () {
   function polybius(input, encode = true) {
     // your solution code here
     let output = false;
+    // guard clause
     if (input.replace(/ /g, '').length % 2 !== 0 && !encode) return output;
-    // encode
+    // encode string
     if (encode) {
       const inputLowerArr = input.toLowerCase().split('');
 
@@ -98,7 +99,7 @@ const polybiusModule = (function () {
         return acc;
       }, '');
     }
-    // decode
+    // decode string
     if (!encode) {
       const inputSplitBySpace = input.split(' ');
       const createdArrByTwoNumbers = [];
