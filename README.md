@@ -7,3 +7,17 @@ This project is designed to test your ability to build complex algorithms. It wi
 - Writing a series of unit tests using Mocha and Chai
 
 - Using different expect() methods to test your code
+
+## How to use the Decoder
+
+### Caesar Shift
+
+This accepts text to be decoded and a shift number. The shift number must not be 0, less than -25, or greater than 25.
+
+### Polybius Square
+
+This accepts text to be decoded.
+
+### Substitution Cipher
+
+This accepts text to be decoded and an alphabet key. The alphabet key must be a string of exactly 26 characters long and no duplicate characters.
